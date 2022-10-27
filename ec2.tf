@@ -110,6 +110,7 @@ resource "aws_volume_attachment" "ebs_att" {
 resource "aws_security_group" "web-node" {
   # security group is open to the world in SSH port
   name        = "${local.resource_prefix.value}-sg"
+  
   description = "${local.resource_prefix.value} Security Group"
   vpc_id      = aws_vpc.web_vpc.id
 
@@ -144,6 +145,7 @@ resource "aws_security_group" "web-node" {
     git_org              = "bridgecrewio"
     git_repo             = "terragoat"
     yor_trace            = "b7af1b40-64eb-4519-a1a0-ab198db4b193"
+    component.          = "A1111"
   }
 }
 
@@ -152,6 +154,7 @@ resource "aws_vpc" "web_vpc" {
   enable_dns_hostnames = true
   enable_dns_support   = true
   tags = merge({
+    
     Name = "${local.resource_prefix.value}-vpc"
     }, {
     git_commit           = "d68d2897add9bc2203a5ed0632a5cdd8ff8cefb0"
